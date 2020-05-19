@@ -2,13 +2,13 @@
   .side__header
     .side__header__box
       %p.side__header__box__left
-        名前
+        = current_user.name
       %ul.side__header__box__right
         %li.side__header__box__icon
           = link_to "#" do 
             = icon('fas', 'edit')
         %li.side__header__box__icon
-          = link_to "#" do 
+          = link_to edit_user_path(current_user) do 
             = icon('fas', 'cog')
         
         
