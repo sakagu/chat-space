@@ -1,1 +1,35 @@
-＜チャット画面＞
+.main
+  .main__header
+    .main__header__left-box
+      %p.main__header__left-box__name
+        tesut
+      %p.main__header__left-box__member
+        Member:名前
+    .main__header__right-box
+      = link_to "Edit", "#", class: "main__header__right-box__edit"
+  .main__chat
+    .main__chat__box
+      .main__chat__box__user
+        %p.main__chat__box__user__name
+        名前
+        %p.main__chat__box__user__time
+        2019/11/20(wed)17:43:34
+      %p.main__chat__box__post
+        おはよう!
+    .main__chat__box
+      .main__chat__box__user
+        %p.main__chat__box__user__name
+        名前
+        %p.main__chat__box__user__time
+        2019/11/20(wed)17:43:34
+      %p.main__chat__box__post
+        こんにちは
+
+  .main__form
+    %form.new_message
+      .input-box
+        %input{type: "text", class: "input-box__text", placeholder: "tye a message"}
+        %label{class: "input-box__image"}
+          = icon('fas', 'image')
+          %input{type: "file", class: "input-box__image__file"}
+      %input{type: "submit", class: "submit-btn", value: "Sent"}
