@@ -1,0 +1,50 @@
+.side {
+  background-color: #253141;
+  width: 300px;
+  height: 100%;
+  &__header {
+    background-color: #253141;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    &__box {
+      height: 20px;
+      width: 100%;
+      margin: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #ffffff;
+      &__right {
+        display: flex;
+        li {
+            line-height: 20px;
+            margin-left: 5px;
+          a {
+            color: #ffffff;
+            text-decoration: none;
+            }
+          }
+      }
+    }
+  }
+  &__group {
+    background-color: #2f3e51;
+    height: calc(100vh - 100px);
+    padding: 0 20px;
+    color: #ffffff;
+    font-weight: bold;
+    &__box {
+      height: 91px;
+      width: 100%;
+      &__name {
+        font-size: 15px;
+        padding-top: 20px;
+      }
+      &__message {
+        font-size: 11px;
+        padding-top: 5px;
+      }
+    }
+  }
+}
