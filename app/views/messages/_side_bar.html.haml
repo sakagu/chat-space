@@ -2,25 +2,27 @@
   .side__header
     .side__header__box
       %p.side__header__box__left
-        名前
+        = current_user.name
       %ul.side__header__box__right
         %li.side__header__box__icon
-          = link_to "#" do 
+          = link_to new_group_path do 
             = icon('fas', 'edit')
         %li.side__header__box__icon
-          = link_to "#" do 
+          = link_to edit_user_path(current_user) do 
             = icon('fas', 'cog')
         
-        
-
   .side__group
-    .side__group__box
-      %p.side__group__box__name
-        techcamp
-      %p.side__group__box__message
-        まだメッセージがありません
-    .side__group__box
-      %p.side__group__box__name
-        techcamp
-      %p.side__group__box__message
-        まだメッセージがありません
+    - current_user.groups.each do |group|
+      .side__group__box
+        = link_to group_messages_path(group) do
+          .side__group__box__name
+            = group.name
+          .side__group__box__message
+            = group.show_last_message
+
+
+  -# .side__group__box
+  -#   %p.side__group__box__name
+  -#     techcamp
+  -#   %p.side__group__box__message
+  -#     まだメッセージがありません

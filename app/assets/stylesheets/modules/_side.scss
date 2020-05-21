@@ -34,16 +34,22 @@
     padding: 0 20px;
     color: #ffffff;
     font-weight: bold;
+    overflow: scroll;
     &__box {
       height: 91px;
       width: 100%;
       &__name {
         font-size: 15px;
         padding-top: 20px;
+        color: #ffffff;
+        text-decoration: none;
       }
       &__message {
         font-size: 11px;
         padding-top: 5px;
+        color: #ffffff;
+        text-decoration: none;
+
       }
     }
   }

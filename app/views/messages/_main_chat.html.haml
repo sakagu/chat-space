@@ -1,35 +1,22 @@
 .main
   .main__header
     .main__header__left-box
-      %p.main__header__left-box__name
-        tesut
+      .main__header__left-box__name
+        = @group.name
       %p.main__header__left-box__member
-        Member:名前
+        Member:
+        - @group.users.each do |user|
+          = user.name
     .main__header__right-box
-      = link_to "Edit", "#", class: "main__header__right-box__edit"
+      = link_to "Edit", "/groups/#{@group.id}/edit", class: "main__header__right-box__edit"
   .main__chat
-    .main__chat__box
-      .main__chat__box__user
-        %p.main__chat__box__user__name
-        名前
-        %p.main__chat__box__user__time
-        2019/11/20(wed)17:43:34
-      %p.main__chat__box__post
-        おはよう!
-    .main__chat__box
-      .main__chat__box__user
-        %p.main__chat__box__user__name
-        名前
-        %p.main__chat__box__user__time
-        2019/11/20(wed)17:43:34
-      %p.main__chat__box__post
-        こんにちは
+    = render @messages
 
   .main__form
-    %form.new_message
+    = form_for [@group, @message] do |f|
       .input-box
-        %input{type: "text", class: "input-box__text", placeholder: "tye a message"}
-        %label{class: "input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "input-box__image__file"}
-      %input{type: "submit", class: "submit-btn", value: "Sent"}
+        = f.text_field :content, class: 'input-box__text', placeholder: 'tye a message'
+        = f.label :image, class: 'input-box__image' do
+          = icon('fas', 'image',class: 'icon')
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit 'Sent', class: 'submit-btn'

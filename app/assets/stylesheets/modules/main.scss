@@ -37,8 +37,10 @@
   &__chat {
     background-color: #fafafa;
     height: calc(100vh - 100px - 90px);
+    overflow: scroll;
+    padding: 46px 40px;
     &__box {
-      padding: 35px 0 46px 40px;
+      padding: 0 0 40px;
       &__user {
         display: flex;
         &__name {
