@@ -56,15 +56,13 @@ $(function(){
       var html = builderHTML(data);
       $('.main__chat').append(html);
       $('.main__chat').animate({ scrollTop: $('.main__chat')[0].scrollHeight});
-      $('.input-box__text').val('');
-      $('form')[0].reset();
-      $('.submit-btn').prop('disabled', false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
-      $('.input-box__text').val('');
+  })
+    .always(function(){
       $('form')[0].reset();
       $('.submit-btn').prop('disabled', false);
-  });
+    })
   })
 });
