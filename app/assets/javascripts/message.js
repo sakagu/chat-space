@@ -40,6 +40,7 @@ $(function(){
       return html;
    };
   }
+
   $('#new_message').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -56,6 +57,9 @@ $(function(){
       var html = builderHTML(data);
       $('.main__chat').append(html);
       $('.main__chat').animate({ scrollTop: $('.main__chat')[0].scrollHeight});
+      tweets.forEach(function(tweet){
+        appendTweet(tweet);
+      })
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
