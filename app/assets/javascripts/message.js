@@ -1,8 +1,9 @@
 $(function(){
+
   function builderHTML(message){
    if ( message.image) {
      var html = 
-     `<div class="main__chat__box">
+     `<div class="main__chat__box" data-message-id=${message.id}>
      <div class="main__chat__box__user">
          <div class="main__chat__box__user__name">
            ${message.user_name}
@@ -22,7 +23,7 @@ $(function(){
     return html;
    } else {
      var html = 
-      `<div class="main__chat__box">
+      `<div class="main__chat__box" data-message-id=${message.id}>
         <div class="main__chat__box__user">
             <div class="main__chat__box__user__name">
               ${message.user_name}
@@ -57,16 +58,39 @@ $(function(){
       var html = builderHTML(data);
       $('.main__chat').append(html);
       $('.main__chat').animate({ scrollTop: $('.main__chat')[0].scrollHeight});
-      tweets.forEach(function(tweet){
-        appendTweet(tweet);
-      })
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
-  })
+    })
     .always(function(){
       $('form')[0].reset();
       $('.submit-btn').prop('disabled', false);
     })
   })
+
+  var reloadMessages =  function() {
+    var last_message_id = $('.main__chat__box:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) { 
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += builderHTML(message)
+      });
+      $('.main__chat').append(insertHTML);
+      $('.main__chat').animate({ scrollTop: $('.main__chat')[0].scrollHeight});
+    }
+    })
+    .fail(function(){
+      alert('error');
+    });
+  };
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
