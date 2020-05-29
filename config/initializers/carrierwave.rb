@@ -13,5 +13,5 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'sakachatspace2019'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/ここにバケット名を入れます'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/sakachatspace2019'
 end
