@@ -38,18 +38,18 @@
     &__box {
       height: 91px;
       width: 100%;
+        a {
+          text-decoration: none;
+        }
       &__name {
         font-size: 15px;
         padding-top: 20px;
         color: #ffffff;
-        text-decoration: none;
       }
       &__message {
         font-size: 11px;
         padding-top: 5px;
         color: #ffffff;
-        text-decoration: none;
-
       }
     }
   }
